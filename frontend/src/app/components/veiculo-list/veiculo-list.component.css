@@ -1,0 +1,145 @@
+/* Definimos sua paleta como variáveis CSS aqui no topo.
+  Fica muito fácil de mudar as cores depois!
+*/
+:host {
+  --cor-fundo-claro: #f4f7f6;
+  --cor-borda: #e0e0e0;
+  --cor-texto-principal: #333;
+  --cor-titulo: #336b80;
+  --cor-primaria-salvar: #3c637c;
+  --cor-secundaria-editar: #5f456d;
+  --cor-destrutiva-deletar: #82265d;
+  --cor-hover-escura: rgba(0, 0, 0, 0.1);
+}
+
+/* --- ESTILOS GERAIS DO COMPONENTE --- */
+:host {
+  display: block;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: system-ui, sans-serif;
+  color: var(--cor-texto-principal);
+}
+
+h2 {
+  color: var(--cor-titulo);
+  border-bottom: 2px solid var(--cor-fundo-claro);
+  padding-bottom: 10px;
+  font-weight: 600;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--cor-borda);
+  margin: 30px 0;
+}
+
+/* --- ESTILO DO FORMULÁRIO --- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: var(--cor-fundo-claro);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--cor-borda);
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--cor-titulo);
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--cor-primaria-salvar);
+  box-shadow: 0 0 5px color-mix(in srgb, var(--cor-primaria-salvar) 50%, transparent);
+}
+
+
+/* --- ESTILO DOS BOTÕES --- */
+button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative; /* Necessário para o efeito de hover */
+}
+
+button:hover {
+  transform: translateY(-2px); /* Efeito de levantar o botão */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+form button[type="submit"] {
+  background-color: var(--cor-primaria-salvar);
+  margin-top: 10px;
+}
+
+form button[type="submit"]:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- ESTILO DA LISTA DE VEÍCULOS --- */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--cor-borda);
+  transition: background-color 0.3s;
+}
+
+li:hover {
+  background-color: var(--cor-fundo-claro);
+}
+
+li span {
+  font-weight: 500;
+}
+
+li .actions {
+  display: flex;
+  gap: 10px;
+}
+
+li .actions button {
+  background-color: var(--cor-secundaria-editar);
+}
+
+li .actions button:last-child {
+  background-color: var(--cor-destrutiva-deletar);
+}
