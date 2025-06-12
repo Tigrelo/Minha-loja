@@ -1,7 +1,9 @@
 package com.empresa.venda_veiculos.controller;
 
 import com.empresa.venda_veiculos.model.Cliente;
+import com.empresa.venda_veiculos.model.Venda;
 import com.empresa.venda_veiculos.service.ClienteService;
+import com.empresa.venda_veiculos.service.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,10 @@ public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
+
+    // --- 1. ADICIONE A INJEÇÃO DO VENDASERVICE ---
+    @Autowired
+    private VendaService vendaService;
 
     @GetMapping
     public List<Cliente> listarTodos() {
@@ -56,5 +62,16 @@ public class ClienteController {
         }
         clienteService.deletar(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}/vendas")
+    public ResponseEntity<List<Venda>> buscarVendasDoCliente(@PathVariable Long id) {
+        // Primeiro, verificamos se o cliente existe
+        if (clienteService.buscarPorId(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        // Se existe, buscamos as vendas dele
+        List<Venda> vendas = vendaService.buscarPorClienteId(id);
+        return ResponseEntity.ok(vendas);
     }
 }

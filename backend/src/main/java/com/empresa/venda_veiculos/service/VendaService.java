@@ -29,4 +29,8 @@ public class VendaService {
     public void deletar(Long id) {
         vendaRepository.deleteById(id);
     }
+
+    public List<Venda> buscarPorClienteId(Long clienteId) {
+        return vendaRepository.findByClienteId(clienteId);
+    }
 }
