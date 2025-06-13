@@ -1,0 +1,36 @@
+<h2>Histórico de Vendas</h2>
+
+<div class="header-actions">
+  <a routerLink="/vendas/novo" class="btn btn-primary">Registrar Nova Venda</a>
+</div>
+
+<p *ngIf="!vendas || vendas.length === 0" class="empty-message">Nenhuma venda encontrada.</p>
+
+<div class="table-container" *ngIf="vendas.length > 0">
+  <table class="data-table">
+    <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Veículo</th>
+      <th>Vendedor</th>
+      <th>Data da Venda</th>
+      <th>Valor Total</th>
+      <th class="actions-header">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let venda of vendas">
+      <td data-label="Cliente">{{ venda.cliente?.nome }}</td>
+      <td data-label="Veículo">{{ venda.veiculo?.marca }} {{ venda.veiculo?.modelo }}</td>
+      <td data-label="Vendedor">{{ venda.vendedor?.nome }}</td>
+      <td data-label="Data da Venda">{{ venda.dataVenda | date:'dd/MM/yyyy' }}</td>
+      <td data-label="Valor Total">{{ venda.valorTotal | currency:'BRL':'symbol':'1.2-2' }}</td>
+      <td>
+        <div class="actions">
+          <button (click)="deletar(venda.id)" class="btn btn-danger btn-sm">Deletar</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

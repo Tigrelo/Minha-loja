@@ -1,0 +1,52 @@
+<h2>Clientes Cadastrados</h2>
+
+<div class="header-actions">
+  <a routerLink="/clientes/novo" class="btn btn-primary">Cadastrar Novo Cliente</a>
+</div>
+
+<p *ngIf="!clientes || clientes.length === 0" class="empty-message">Nenhum cliente encontrado.</p>
+
+<div class="table-container" *ngIf="clientes.length > 0">
+  <table class="data-table">
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>Telefone</th>
+      <th class="actions-header">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <td data-label="Nome">{{ cliente.nome }}</td>
+      <td data-label="CPF">{{ cliente.cpf }}</td>
+      <td data-label="Telefone">{{ cliente.telefone }}</td>
+      <td>
+        <div class="actions">
+          <button (click)="verVendas(cliente)" class="btn btn-secondary btn-sm">Ver Veículos</button>
+          <a [routerLink]="['/clientes/editar', cliente.id]" class="btn btn-secondary btn-sm">Editar</a>
+          <button (click)="deletar(cliente.id)" class="btn btn-danger btn-sm">Deletar</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr *ngIf="clienteSelecionado">
+
+<div *ngIf="clienteSelecionado" class="detalhes-vendas">
+  <h3>Veículos Comprados por: {{ clienteSelecionado.nome }}</h3>
+
+  <div *ngIf="vendasDoCliente.length > 0; else semVendas">
+    <ul>
+      <li *ngFor="let venda of vendasDoCliente">
+        {{ venda.veiculo.marca }} {{ venda.veiculo.modelo }} (Ano: {{venda.veiculo.ano}}) - Vendido em {{ venda.dataVenda | date:'dd/MM/yyyy' }}
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #semVendas>
+    <p>Este cliente ainda não comprou nenhum veículo.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,55 @@
+/* --- ESTILOS PARA TABELAS DE DADOS --- */
+
+.table-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  /* Adiciona uma barra de rolagem horizontal em telas muito pequenas */
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse; /* Remove o espaço entre as células */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Estilo para todas as células, do cabeçalho e do corpo */
+.data-table th,
+.data-table td {
+  padding: 16px 15px;
+  border-bottom: 1px solid #e9ecef;
+  vertical-align: middle; /* Centraliza o conteúdo verticalmente */
+}
+
+/* Estilo apenas para o cabeçalho (thead) */
+.data-table thead th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* Adiciona um efeito de hover nas linhas do corpo da tabela */
+.data-table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+/* Alinha o texto da coluna "Ações" à direita */
+.data-table .actions-header {
+  text-align: right;
+}
+
+/* Alinha os botões dentro da coluna "Ações" à direita */
+.data-table td .actions {
+  justify-content: flex-end;
+}
+
+/* Estilo para deixar os botões um pouco menores dentro da tabela */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}

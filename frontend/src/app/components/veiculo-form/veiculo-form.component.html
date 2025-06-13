@@ -1,0 +1,26 @@
+<div class="form-container">
+  <h2>{{ isEditMode ? 'Editar Veículo' : 'Cadastrar Novo Veículo' }}</h2>
+
+  <form #veiculoForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="marca">Marca:</label>
+      <input type="text" id="marca" name="marca" class="form-control" [(ngModel)]="veiculo.marca" required>
+    </div>
+    <div class="form-group">
+      <label for="modelo">Modelo:</label>
+      <input type="text" id="modelo" name="modelo" class="form-control" [(ngModel)]="veiculo.modelo" required>
+    </div>
+    <div class="form-group">
+      <label for="ano">Ano:</label>
+      <input type="number" id="ano" name="ano" class="form-control" [(ngModel)]="veiculo.ano" required>
+    </div>
+    <div class="form-group">
+      <label for="preco">Preço:</label>
+      <input type="number" id="preco" name="preco" class="form-control" [(ngModel)]="veiculo.preco" required>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="!veiculoForm.valid">Salvar</button>
+      <button type="button" class="btn btn-secondary" (click)="voltarParaLista()">Cancelar</button>
+    </div>
+  </form>
+</div>

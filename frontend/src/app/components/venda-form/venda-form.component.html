@@ -1,0 +1,40 @@
+<div class="form-container">
+  <h2>Cadastrar Nova Venda</h2>
+
+  <form #vendaForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="cliente">Cliente:</label>
+      <select id="cliente" name="clienteId" class="form-control" [(ngModel)]="venda.cliente.id" required>
+        <option [ngValue]="null" disabled>Selecione um cliente</option>
+        <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="veiculo">Veículo:</label>
+      <select id="veiculo" name="veiculoId" class="form-control" [(ngModel)]="venda.veiculo.id" required>
+        <option [ngValue]="null" disabled>Selecione um veículo</option>
+        <option *ngFor="let veiculo of veiculos" [value]="veiculo.id">
+          {{ veiculo.marca }} {{ veiculo.modelo }} (Ano: {{ veiculo.ano }})
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="vendedor">Vendedor:</label>
+      <select id="vendedor" name="vendedorId" class="form-control" [(ngModel)]="venda.vendedor.id" required>
+        <option [ngValue]="null" disabled>Selecione um vendedor</option>
+        <option *ngFor="let vendedor of vendedores" [value]="vendedor.id">{{ vendedor.nome }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="valorTotal">Valor da Venda:</label>
+      <input type="number" id="valorTotal" name="valorTotal" class="form-control" [(ngModel)]="venda.valorTotal" required>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="!vendaForm.valid">Salvar Venda</button>
+    </div>
+  </form>
+</div>

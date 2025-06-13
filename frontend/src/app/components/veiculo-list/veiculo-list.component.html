@@ -1,37 +1,23 @@
-<h2>Cadastrar Novo Veículo</h2>
-<form #veiculoForm="ngForm" (ngSubmit)="onSubmit(veiculoForm)">
-  <div>
-    <label for="marca">Marca:</label>
-    <input type="text" id="marca" name="marca" ngModel required>
-  </div>
-  <div>
-    <label for="modelo">Modelo:</label>
-    <input type="text" id="modelo" name="modelo" ngModel required>
-  </div>
-  <div>
-    <label for="ano">Ano:</label>
-    <input type="number" id="ano" name="ano" ngModel required>
-  </div>
-  <div>
-    <label for="preco">Preço:</label>
-    <input type="number" id="preco" name="preco" ngModel required>
-  </div>
-  <button type="submit" [disabled]="!veiculoForm.valid">Salvar</button>
-</form>
+<h2>Veículos Disponíveis</h2>
 
-<hr>
+<div class="header-actions">
+  <a routerLink="/veiculos/novo" class="btn btn-primary">Cadastrar Novo Veículo</a>
+</div>
 
-<h2>Veículos à Venda</h2>
-<p *ngIf="veiculos.length === 0">Nenhum veículo encontrado.</p>
+<p *ngIf="!veiculos || veiculos.length === 0" class="empty-message">Nenhum veículo encontrado.</p>
 
-<ul *ngIf="veiculos.length > 0">
-  <li *ngFor="let veiculo of veiculos">
-    <span>
-      {{ veiculo.marca }} {{ veiculo.modelo }} ({{ veiculo.ano }}) - R$ {{ veiculo.preco }}
-    </span>
-    <div class="actions">
-      <button (click)="iniciarEdicao(veiculo)">Editar</button>
-      <button (click)="deletar(veiculo.id)">Deletar</button>
+<div class="vehicle-grid" *ngIf="veiculos.length > 0">
+  <div class="vehicle-card" *ngFor="let veiculo of veiculos">
+    <div class="card-header">
+      <h3>{{ veiculo.marca }} {{ veiculo.modelo }}</h3>
+      <span class="card-year">{{ veiculo.ano }}</span>
     </div>
-  </li>
-</ul>
+    <div class="card-body">
+      <p class="card-price">R$ {{ veiculo.preco | number:'1.2-2' }}</p>
+    </div>
+    <div class="card-actions">
+      <a [routerLink]="['/veiculos/editar', veiculo.id]" class="btn btn-secondary">Editar</a>
+      <button (click)="deletar(veiculo.id)" class="btn btn-danger">Deletar</button>
+    </div>
+  </div>
+</div>

@@ -5,9 +5,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
-export class VeiculoService {
-  private apiUrl = 'http://localhost:8080/api/veiculos';
+export class VendaService {
+  private apiUrl = 'http://localhost:8080/api/vendas';
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
@@ -18,25 +17,21 @@ export class VeiculoService {
 
   constructor(private http: HttpClient) { }
 
-  getVeiculos(): Observable<any[]> {
+  getVendas(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl, { headers: this.getHeaders() });
   }
 
-  getVeiculoById(id: number): Observable<any> {
+  salvarVenda(venda: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, venda, { headers: this.getHeaders() });
+  }
+
+  // --- NOVO MÉTODO PARA ATUALIZAR (EDITAR) ---
+  atualizarVenda(id: number, venda: any): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.get<any>(url, { headers: this.getHeaders() });
+    return this.http.put<any>(url, venda, { headers: this.getHeaders() });
   }
 
-  salvarVeiculo(veiculo: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, veiculo, { headers: this.getHeaders() });
-  }
-
-  atualizarVeiculo(id: number, veiculo: any): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.put<any>(url, veiculo, { headers: this.getHeaders() });
-  }
-
-  deletarVeiculo(id: number): Observable<void> {
+  deletarVenda(id: number): Observable<void> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<void>(url, { headers: this.getHeaders() });
   }

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { VeiculoListComponent } from './components/veiculo-list/veiculo-list.component'; // 1. IMPORTE AQUI
+// O RouterOutlet e o RouterLink são tudo que você precisa para a navegação
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  // 2. ADICIONE O VeiculoListComponent AQUI NO ARRAY DE IMPORTS
-  imports: [CommonModule, RouterOutlet, VeiculoListComponent],
+  // A lista de imports fica mais limpa, sem o VeiculoListComponent
+  imports: [CommonModule, RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
