@@ -1,7 +1,9 @@
 package com.empresa.venda_veiculos.model;
 
-import jakarta.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -24,7 +26,10 @@ public class Venda {
     @JoinColumn(name = "vendedor_id")
     private Vendedor vendedor;
 
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataVenda;
+
     private double valorTotal;
 
     public Venda() {}
@@ -37,6 +42,7 @@ public class Venda {
         this.valorTotal = valorTotal;
     }
 
+    // Getters e Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
