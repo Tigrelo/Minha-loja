@@ -1,79 +1,255 @@
-/* --- ESTILOS PARA TABELAS (VERSÃO REFINADA) --- */
+/* --- Estilos Globais com sua Paleta --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+:root {
+  --cor-fundo-pagina: #f4f7f9;
+  --cor-fundo-container: white;
+  --cor-texto-principal: #3a3a3a;
+  --cor-borda-sutil: #e9ecef;
+  --cor-primaria: #1f576b;
+  --cor-secundaria: #52526d;
+  --cor-destrutiva: #7d4d6e;
+  --cor-navegacao: #41536c;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--cor-fundo-pagina);
+  color: var(--cor-texto-principal);
+}
+
+h1, h2 {
+  color: var(--cor-primaria);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--cor-borda-sutil);
+  margin: 2rem 0;
+}
+
+/* --- Estilos de Botão Padrão --- */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(110%);
+}
+
+.btn-primary { background-color: var(--cor-primaria); }
+.btn-secondary { background-color: var(--cor-secundaria); }
+.btn-danger { background-color: var(--cor-destrutiva); }
+
+/* --- Menu de Navegação --- */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 2rem;
+}
+nav .btn-secondary {
+  background-color: var(--cor-navegacao);
+}
+nav .btn-secondary:hover {
+  background-color: var(--cor-primaria);
+}
+
+
+/* --- Layout da Lista (Grid de Cards de Veículos) --- */
+.header-actions {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 0 20px;
+}
+
+.vehicle-card {
+  background-color: var(--cor-fundo-container);
+  border-radius: 12px;
+  border: 1px solid var(--cor-borda-sutil);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  color: var(--cor-primaria);
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--cor-borda-sutil);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.card-year {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--cor-secundaria);
+}
+
+.card-body {
+  padding: 25px 20px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.card-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  margin: 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid var(--cor-borda-sutil);
+  justify-content: flex-end;
+}
+
+.card-actions .btn {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+}
+
+.empty-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #6c757d;
+  padding: 40px 0;
+}
+
+/* --- Layout do Formulário --- */
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 30px;
+  background-color: var(--cor-fundo-container);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* --- ESTILOS PARA TABELAS (VERSÃO MODERNA) --- */
 .table-container {
-  background-color: white;
-  border-radius: 12px; /* Bordas um pouco mais arredondadas */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07); /* Sombra mais suave */
+  background-color: var(--cor-fundo-container);
+  border-radius: 8px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  overflow: hidden; /* Garante que o conteúdo respeite as bordas arredondadas */
+  overflow: hidden;
 }
 
 .data-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  /* Espaçamento entre as bordas da tabela e o container */
-  border-spacing: 0;
 }
 
 .data-table th,
 .data-table td {
-  padding: 18px 22px; /* Ajuste fino no espaçamento */
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
   vertical-align: middle;
 }
 
-/* Cabeçalho da Tabela */
-.data-table thead th {
-  background-color: #f8f9fa; /* Fundo mais claro para um look mais "light" */
-  color: #556270; /* Cor do texto mais suave */
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  border-bottom: 2px solid #e9ecef; /* Borda inferior mais forte */
-}
-
-/* Corpo da Tabela */
-.data-table tbody td {
-  color: #4a4a4a;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-/* 1. EFEITO ZEBRADO (LINHAS ALTERNADAS) */
-.data-table tbody tr:nth-child(even) {
-  background-color: #fcfcfc;
-}
-
-/* Remove a borda da última linha */
 .data-table tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* 2. EFEITO DE HOVER APRIMORADO */
-.data-table tbody tr {
-  transition: background-color 0.25s ease, transform 0.25s ease;
+.data-table thead th {
+  background-color: var(--cor-primaria);
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
 }
 
 .data-table tbody tr:hover {
-  background-color: #eef8ff; /* Cor de destaque sutil */
-  transform: scale(1.015); /* Efeito de "zoom" sutil na linha */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #eef8ff;
 }
 
-/* 3. DESTAQUE NA PRIMEIRA COLUNA */
 .data-table tbody td:first-child {
   font-weight: 500;
   color: #2c3e50;
 }
 
-/* Ações */
 .data-table .actions-header {
   text-align: right;
-  width: 1%; /* Faz a coluna de ações ter a menor largura possível */
+  width: 1%;
 }
 
+/* A REGRA CORRIGIDA ESTÁ AQUI */
 .data-table td .actions {
+  display: flex; /* <-- ESTA LINHA É A CORREÇÃO */
   justify-content: flex-end;
+  gap: 8px; /* Adiciona um espaço entre os botões */
 }
 
 .btn-sm {

@@ -7,17 +7,22 @@
 <p *ngIf="!veiculos || veiculos.length === 0" class="empty-message">Nenhum veículo encontrado.</p>
 
 <div class="vehicle-grid" *ngIf="veiculos.length > 0">
+
   <div class="vehicle-card" *ngFor="let veiculo of veiculos">
+
     <div class="card-header">
       <h3>{{ veiculo.marca }} {{ veiculo.modelo }}</h3>
       <span class="card-year">{{ veiculo.ano }}</span>
     </div>
+
     <div class="card-body">
-      <p class="card-price">R$ {{ veiculo.preco | number:'1.2-2' }}</p>
+      <p class="card-price">{{ veiculo.preco | currency:'BRL':'symbol':'1.2-2' }}</p>
     </div>
+
     <div class="card-actions">
       <a [routerLink]="['/veiculos/editar', veiculo.id]" class="btn btn-secondary">Editar</a>
       <button (click)="deletar(veiculo.id)" class="btn btn-danger">Deletar</button>
     </div>
+
   </div>
 </div>

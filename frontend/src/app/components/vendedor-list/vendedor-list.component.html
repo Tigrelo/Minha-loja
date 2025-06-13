@@ -1,1 +1,33 @@
-<p>vendedor-list works!</p>
+<h2>Vendedores Cadastrados</h2>
+
+<div class="header-actions">
+  <a routerLink="/vendedores/novo" class="btn btn-primary">Cadastrar Novo Vendedor</a>
+</div>
+
+<p *ngIf="!vendedores || vendedores.length === 0" class="empty-message">Nenhum vendedor encontrado.</p>
+
+<div class="table-container" *ngIf="vendedores.length > 0">
+  <table class="data-table">
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th class="actions-header">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let vendedor of vendedores">
+      <td data-label="Nome">{{ vendedor.nome }}</td>
+      <td data-label="Email">{{ vendedor.email }}</td>
+      <td data-label="Telefone">{{ vendedor.telefone }}</td>
+      <td>
+        <div class="actions">
+          <a [routerLink]="['/vendedores/editar', vendedor.id]" class="btn btn-secondary btn-sm">Editar</a>
+          <button (click)="deletar(vendedor.id)" class="btn btn-danger btn-sm">Deletar</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

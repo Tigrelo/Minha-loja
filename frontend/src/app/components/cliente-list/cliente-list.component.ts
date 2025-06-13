@@ -25,6 +25,11 @@ export class ClienteListComponent implements OnInit {
   getClientes(): void {
     this.clienteService.getClientes().subscribe((data: any[]) => {
       this.clientes = data;
+
+      // ADICIONE ESTE BLOCO PARA VERIFICAR OS DADOS
+      if (data && data.length > 0) {
+        console.log('Inspecionando os dados do primeiro cliente:', data[0]);
+      }
     });
   }
 

@@ -18,9 +18,13 @@
     </thead>
     <tbody>
     <tr *ngFor="let cliente of clientes">
+
       <td data-label="Nome">{{ cliente.nome }}</td>
+
       <td data-label="CPF">{{ cliente.cpf }}</td>
+
       <td data-label="Telefone">{{ cliente.telefone }}</td>
+
       <td>
         <div class="actions">
           <button (click)="verVendas(cliente)" class="btn btn-secondary btn-sm">Ver Veículos</button>
@@ -28,6 +32,7 @@
           <button (click)="deletar(cliente.id)" class="btn btn-danger btn-sm">Deletar</button>
         </div>
       </td>
+
     </tr>
     </tbody>
   </table>
@@ -37,7 +42,6 @@
 
 <div *ngIf="clienteSelecionado" class="detalhes-vendas">
   <h3>Veículos Comprados por: {{ clienteSelecionado.nome }}</h3>
-
   <div *ngIf="vendasDoCliente.length > 0; else semVendas">
     <ul>
       <li *ngFor="let venda of vendasDoCliente">
@@ -45,7 +49,6 @@
       </li>
     </ul>
   </div>
-
   <ng-template #semVendas>
     <p>Este cliente ainda não comprou nenhum veículo.</p>
   </ng-template>
