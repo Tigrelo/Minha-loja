@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router'; // Importe o RouterLink
   templateUrl: './veiculo-list.component.html',
   styleUrls: ['./veiculo-list.component.css']
 })
-// GARANTA QUE 'export' ESTEJA AQUI
+
 export class VeiculoListComponent implements OnInit {
   veiculos: any[] = [];
 
@@ -38,7 +38,6 @@ export class VeiculoListComponent implements OnInit {
         error: (err: any) => {
           if (err.status === 500 || err.status === 400) {
 
-            // --- MENSAGEM MELHORADA E INSTRUTIVA AQUI ---
             alert('Este veículo não pode ser excluído porque faz parte de uma ou mais vendas.\n\nPara excluí-lo, você precisa primeiro ir até a tela de "Vendas" e deletar o registro da venda associada a ele.');
 
           } else {

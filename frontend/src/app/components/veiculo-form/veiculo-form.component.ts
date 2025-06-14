@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// 1. REMOVA O RouterOutlet DESTA LINHA
 import { ActivatedRoute, Router } from '@angular/router';
 import { VeiculoService } from '../../services/veiculo.service';
 import { CommonModule } from '@angular/common';
@@ -8,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-veiculo-form',
   standalone: true,
-  // 2. REMOVA O RouterOutlet DESTE ARRAY
   imports: [CommonModule, FormsModule],
   templateUrl: './veiculo-form.component.html',
   styleUrls: ['./veiculo-form.component.css']

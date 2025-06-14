@@ -17,7 +17,7 @@ export class VendedorService {
 
   constructor(private http: HttpClient) { }
 
-  // --- O MÉTODO QUE ESTAVA FALTANDO ---
+
   getVendedores(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl, { headers: this.getHeaders() });
   }

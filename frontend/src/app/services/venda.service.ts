@@ -25,7 +25,7 @@ export class VendaService {
     return this.http.post<any>(this.apiUrl, venda, { headers: this.getHeaders() });
   }
 
-  // --- NOVO MÉTODO PARA ATUALIZAR (EDITAR) ---
+
   atualizarVenda(id: number, venda: any): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.put<any>(url, venda, { headers: this.getHeaders() });
