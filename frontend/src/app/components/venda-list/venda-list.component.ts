@@ -26,7 +26,7 @@ export class VendaListComponent implements OnInit {
     });
   }
 
-  // MÉTODO 'deletar' CORRIGIDO E ATIVADO
+  // MÉTODO 'deletar
   deletar(id: number): void {
     if (confirm('Tem certeza que deseja deletar esta venda? Esta ação não pode ser desfeita.')) {
       this.vendaService.deletarVenda(id).subscribe({

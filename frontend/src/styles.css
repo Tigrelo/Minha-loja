@@ -247,7 +247,7 @@ nav .btn-secondary:hover {
 
 /* A REGRA CORRIGIDA ESTÁ AQUI */
 .data-table td .actions {
-  display: flex; /* <-- ESTA LINHA É A CORREÇÃO */
+  display: flex;
   justify-content: flex-end;
   gap: 8px; /* Adiciona um espaço entre os botões */
 }

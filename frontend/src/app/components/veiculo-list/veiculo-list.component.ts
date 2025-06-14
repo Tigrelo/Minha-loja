@@ -15,7 +15,8 @@ import { RouterLink } from '@angular/router'; // Importe o RouterLink
 export class VeiculoListComponent implements OnInit {
   veiculos: any[] = [];
 
-  constructor(private veiculoService: VeiculoService) { }
+  constructor(private veiculoService: VeiculoService) {
+  }
 
   ngOnInit(): void {
     this.getVeiculos();
@@ -29,8 +30,21 @@ export class VeiculoListComponent implements OnInit {
 
   deletar(id: number): void {
     if (confirm('Tem certeza que deseja deletar este veículo?')) {
-      this.veiculoService.deletarVeiculo(id).subscribe(() => {
-        this.veiculos = this.veiculos.filter(v => v.id !== id);
+      this.veiculoService.deletarVeiculo(id).subscribe({
+        next: () => {
+          this.veiculos = this.veiculos.filter(v => v.id !== id);
+          alert('Veículo deletado com sucesso!');
+        },
+        error: (err: any) => {
+          if (err.status === 500 || err.status === 400) {
+
+            // --- MENSAGEM MELHORADA E INSTRUTIVA AQUI ---
+            alert('Este veículo não pode ser excluído porque faz parte de uma ou mais vendas.\n\nPara excluí-lo, você precisa primeiro ir até a tela de "Vendas" e deletar o registro da venda associada a ele.');
+
+          } else {
+            alert('Ocorreu um erro ao deletar o veículo.');
+          }
+        }
       });
     }
   }

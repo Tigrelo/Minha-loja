@@ -16,7 +16,8 @@ export class ClienteListComponent implements OnInit {
   clienteSelecionado: any = null;
   vendasDoCliente: any[] = [];
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService) {
+  }
 
   ngOnInit(): void {
     this.getClientes();
@@ -50,6 +51,7 @@ export class ClienteListComponent implements OnInit {
         error: (err) => {
           console.error('ERRO ao buscar vendas do cliente:', err);
           alert('Ocorreu um erro ao buscar os veículos deste cliente. Verifique o console (F12) para mais detalhes.');
+
           // Limpa a seleção em caso de erro para não manter a tela em um estado inconsistente
           this.clienteSelecionado = null;
           this.vendasDoCliente = [];
@@ -57,11 +59,19 @@ export class ClienteListComponent implements OnInit {
       });
     }
   }
-
   deletar(id: number): void {
     if (confirm('Tem certeza que deseja deletar este cliente?')) {
-      this.clienteService.deletarCliente(id).subscribe(() => {
-        this.clientes = this.clientes.filter(c => c.id !== id);
+      this.clienteService.deletarCliente(id).subscribe({
+        // O que fazer em caso de SUCESSO
+        next: () => {
+          this.clientes = this.clientes.filter(c => c.id !== id);
+          alert('Cliente deletado com sucesso!'); // Feedback de sucesso
+        },
+        // O que fazer em caso de FALHA
+        error: (err) => {
+          console.error('Erro ao deletar cliente:', err);
+          alert('Não foi possível deletar o cliente.'); // Feedback de erro
+        }
       });
     }
   }

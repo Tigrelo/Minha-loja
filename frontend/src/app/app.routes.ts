@@ -17,12 +17,12 @@ export const routes: Routes = [
   { path: 'veiculos/novo', component: VeiculoFormComponent },
   { path: 'veiculos/editar/:id', component: VeiculoFormComponent },
 
-  // Rotas de Clientes
+  //  Rotas de Clientes
   { path: 'clientes', component: ClienteListComponent },
   { path: 'clientes/novo', component: ClienteFormComponent },
   { path: 'clientes/editar/:id', component: ClienteFormComponent },
 
-  // --- 2. ADICIONE AS NOVAS ROTAS AQUI ---
+  // 2. ADICIONE AS NOVAS ROTAS AQUI
 
   // Rotas de Vendedores
   { path: 'vendedores', component: VendedorListComponent },
@@ -32,7 +32,7 @@ export const routes: Routes = [
   // Rotas de Vendas
   { path: 'vendas', component: VendaListComponent },
   { path: 'vendas/novo', component: VendaFormComponent },
-  // A edição de venda pode ser mais complexa, então vamos focar na lista e criação por enquanto.
+
 
   // Redirecionamento padrão
   { path: '', redirectTo: '/veiculos', pathMatch: 'full' },
